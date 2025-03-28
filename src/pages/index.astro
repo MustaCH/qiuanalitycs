@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SignUpModal from '../components/SignUpModal.astro';
 ---
 
 <Layout title="E-commerce Analytics Beta">
@@ -8,7 +9,7 @@ import Layout from '../layouts/Layout.astro';
 		<section class="container mx-auto px-4 py-20">
 			<div class="max-w-4xl mx-auto text-center">
 				<h1 class="text-5xl font-bold text-white mb-6">
-					Análisis de Competencia para E-commerce
+					Análisis de Competencia para<br/>E-commerce
 				</h1>
 				<p class="text-xl text-white mb-8">
 					Descubre las tendencias del mercado y supera a tu competencia con datos en tiempo real
@@ -17,43 +18,43 @@ import Layout from '../layouts/Layout.astro';
 				<!-- Countdown Timer -->
 				<div class="flex flex-col items-center bg-transparent backdrop-blur-sm p-8">
 					<h2 class="text-2xl font-semibold text-white mb-4 drop-shadow-md">Lanzamiento de la Beta:</h2>
-					<div id="countdown" class="grid grid-flow-col gap-5 text-center auto-cols-max">
-						<div class="flex flex-col p-2 bg-white rounded-lg shadow-lg">
-							<span class="countdown font-mono text-4xl text-blue-600">
+					<div id="countdown" class="grid grid-flow-col gap-5   rounded-lg px-4 border border-white text-center auto-cols-max">
+						<div class="flex flex-col p-2 rounded-lg">
+							<span class="countdown font-mono text-4xl text-white drop-shadow-md">
 								<span id="days">00</span>
 							</span>
-							<span class="text-sm text-gray-600">Días</span>
+							<span class="text-sm text-white drop-shadow-md">Días</span>
 						</div>
-						<div class="flex flex-col p-2 bg-white rounded-lg shadow-lg">
-							<span class="countdown font-mono text-4xl text-blue-600">
+						<div class="flex flex-col p-2  rounded-lg">
+							<span class="countdown font-mono text-4xl text-white drop-shadow-md">
 								<span id="hours">00</span>
 							</span>
-							<span class="text-sm text-gray-600">Horas</span>
+							<span class="text-sm text-white drop-shadow-md">Horas</span>
 						</div>
-						<div class="flex flex-col p-2 bg-white rounded-lg shadow-lg">
-							<span class="countdown font-mono text-4xl text-blue-600">
+						<div class="flex flex-col p-2  rounded-lg">
+							<span class="countdown font-mono text-4xl text-white drop-shadow-md">
 								<span id="minutes">00</span>
 							</span>
-							<span class="text-sm text-gray-600">Minutos</span>
+							<span class="text-sm text-white drop-shadow-md">Minutos</span>
 						</div>
-						<div class="flex flex-col p-2 bg-white rounded-lg shadow-lg">
-							<span class="countdown font-mono text-4xl text-blue-600">
+						<div class="flex flex-col p-2  rounded-lg">
+							<span class="countdown font-mono text-4xl text-white drop-shadow-md">
 								<span id="seconds">00</span>
 							</span>
-							<span class="text-sm text-gray-600">Segundos</span>
+							<span class="text-sm text-white drop-shadow-md">Segundos</span>
 						</div>
 					</div>
 				</div>
 
 				<!-- Sign Up Button -->
-				<button class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300">
+				<button class="signup bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300">
 					Inscribirse a la Beta
 				</button>
 			</div>
 		</section>
 
 		<!-- Features Section -->
-		<section class="min-h-screen bg-gray-50 py-20">
+		<section class="min-h-screen grid place-content-center bg-gray-50 py-20">
 			<div class="container mx-auto px-4">
 				<div class="flex flex-col gap-4 mb-12">
 					<p class="text-blue-600 text-xl font-bold text-center">Un paso adelante</p>
@@ -118,7 +119,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 		<!-- Promo Section -->
-		<section class="min-h-screen grid grid-cols-2  bg-white py-20">
+		<section class="min-h-screen grid md:grid-cols-2  bg-white py-20">
 			<div class="container flex flex-col justify-evenly gap-4 mx-auto px-8">
 				<div class="flex flex-col gap-4">
 					<h2 class="text-4xl font-bold text-black text-start">Una herramienta fácil de usar.</h2>
@@ -127,7 +128,7 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 				<div class="container flex flex-col items-start justify-center gap-4 mx-auto">
 					<!-- Sign Up Button -->
-					<button class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
+					<button class="signup bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
 						Inscribirse a la Beta
 					</button>
 				</div>
@@ -136,38 +137,57 @@ import Layout from '../layouts/Layout.astro';
 				<div class="bg-[url('/images/section2-2.jpg')] bg-cover bg-center row-span-2 h-full w-full"></div>
 				<div class="grid place-items-center bg-gradient-to-br from-blue-700 to-violet-800 w-full">
 					<div class="flex flex-col">
-						<p class="text-white text-6xl font-bold text-left"><span class="text-4xl mr-[-3%]">x</span>10</p>
-						<p class="text-white text-left text-2xl font-bold">Más rápido</p>
-						<p class="text-white text-center font-semibold">Que hacerlo manualmente</p>
+						<p class="text-white text-6xl font-bold md:text-left text-center"><span class="text-4xl mr-[-3%]">x</span>10</p>
+						<p class="text-white md:text-left text-center text-2xl font-bold">Más rápido</p>
+						<p class="text-white md:text-left text-center font-semibold">Que hacerlo manualmente</p>
 					</div>
 				</div>
 				<div class="bg-[url('/images/section2-3.jpg')] bg-cover bg-center h-[100%] w-full"></div>
 			</div>
 		</section>
-		<section class="grid place-items-center min-h-screen bg-gradient-to-br from-blue-700 via-violet-800 to-blue-900 py-20">
+		<section class="grid place-items-center min-h-screen bg-white py-20">
 			<div class="grid place-items-center h-full mx-auto px-4">
-				<div class="flex flex-col items-center gap-8">
-					<div class="flex flex-col gap-2">
-						<h2 class="text-4xl font-bold text-white text-center">¿Qué esperas?</h2>
-						<p class="text-white text-center font-semibold">Inscríbete a la Beta y descubre cómo Qiu puede ayudarte a mejorar tu negocio</p>
-						<p class="text-white/80 text-center font-semibold">Te notificaremos por correo electrónico en cuanto esté disponible</p>
+				<div class="flex flex-col items-center gap-12">
+					<div class="flex flex-col gap-2 text-center">
+						<p class="text-blue-600 font-semibold text-md">Pricing</p>
+						<h2 class="text-4xl font-bold text-black">Beta Gratuita</h2>
+						<p class="text-black font-semibold">Inscríbete a la Beta y descubre cómo Qiu puede ayudarte a mejorar tu negocio</p>
+						<p class="text-black/80 font-semibold">Te notificaremos por correo electrónico en cuanto esté disponible</p>
 					</div>
-					
+					<div class="grid md:grid-cols-3 gap-8 mx-auto md:px-12">
+						<div class="relative flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg md:w-[50%] place-self-center">	
+							<svg class="size-16 text-gray-500 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-lock"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" /><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M8 11v-4a4 4 0 1 1 8 0v4" /></svg>					
+							<h3 class="text-4xl font-bold text-blue-600 blur-md">Free</h3>
+							<p class="text-5xl font-semibold blur-md">$0/mes</p>
+							<p class="text-gray-600 blur-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ut inventore modi unde voluptatum eius aut incidunt voluptatem quibusdam, dicta repellendus totam, impedit maiores. Veritatis nesciunt alias fuga error doloremque.</p>
+						</div>
+						<div class="relative flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg md:w-[50%] place-self-center">
+							<svg class="size-16 text-gray-500 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-lock"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" /><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M8 11v-4a4 4 0 1 1 8 0v4" /></svg>					
+							<h3 class="text-4xl font-bold text-blue-600 blur-md">Pro</h3>
+							<p class="text-5xl font-semibold blur-md">$3999/mes</p>
+							<p class="text-gray-600 blur-md">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium ea, assumenda delectus quidem nostrum expedita, dignissimos, maxime magnam nemo animi consequatur est. Eos corrupti quo soluta, placeat natus quas quidem?</p>
+						</div>
+						<div class="relative flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg md:w-[50%] place-self-center">
+							<svg class="size-16 text-gray-500 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-lock"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" /><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M8 11v-4a4 4 0 1 1 8 0v4" /></svg>									
+							<h3 class="text-4xl font-bold text-blue-600 blur-md">Anual Pro</h3>
+							<p class="text-5xl font-semibold blur-md">$2999/mes</p>
+							<p class="text-gray-600 blur-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus exercitationem reprehenderit iusto magnam illo recusandae est, odit beatae, suscipit dolorem ea sed rerum hic impedit, temporibus officiis dolorum dolore! Exercitationem!</p>
+						</div>
+					</div>
 					<!-- Sign Up Button -->
-					<button class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300 w-fit">
+					<button class="signup bg-blue-600 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300 w-fit">
 							Inscribirse a la Beta
 						</button>
 				</div>
 			</div>
 		</section>
 	</main>
+	<SignUpModal />
 </Layout>
 
 <script>
-	// Obtener la fecha de lanzamiento desde las variables de entorno
 	const launchDate = new Date(import.meta.env.PUBLIC_LAUNCH_DATE);
 
-	// Update the countdown every 1 second
 	const countdown = setInterval(function() {
 		const now = new Date().getTime();
 		const distance = launchDate.getTime() - now;
@@ -193,4 +213,5 @@ import Layout from '../layouts/Layout.astro';
 			if (countdownElement) countdownElement.innerHTML = "¡LANZAMIENTO COMPLETADO!";
 		}
 	}, 1000);
+
 </script>
