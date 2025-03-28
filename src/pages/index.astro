@@ -3,20 +3,20 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="E-commerce Analytics Beta">
-	<main class="min-h-screen bg-white">
+	<main class="min-h-screen bg-gradient-to-br from-blue-700 via-violet-800 to-blue-900">
 		<!-- Hero Section -->
 		<section class="container mx-auto px-4 py-20">
 			<div class="max-w-4xl mx-auto text-center">
-				<h1 class="text-5xl font-bold text-gray-900 mb-6">
+				<h1 class="text-5xl font-bold text-white mb-6">
 					Análisis de Competencia para E-commerce
 				</h1>
-				<p class="text-xl text-gray-600 mb-8">
+				<p class="text-xl text-white mb-8">
 					Descubre las tendencias del mercado y supera a tu competencia con datos en tiempo real
 				</p>
 				
 				<!-- Countdown Timer -->
-				<div class="flex flex-col items-center bg-blue-50 p-8 rounded-lg mb-12">
-					<h2 class="text-2xl font-semibold text-gray-800 mb-4">Lanzamiento Beta en:</h2>
+				<div class="flex flex-col items-center bg-transparent backdrop-blur-sm p-8">
+					<h2 class="text-2xl font-semibold text-white mb-4 drop-shadow-md">Lanzamiento de la Beta:</h2>
 					<div id="countdown" class="grid grid-flow-col gap-5 text-center auto-cols-max">
 						<div class="flex flex-col p-2 bg-white rounded-lg shadow-lg">
 							<span class="countdown font-mono text-4xl text-blue-600">
@@ -46,28 +46,117 @@ import Layout from '../layouts/Layout.astro';
 				</div>
 
 				<!-- Sign Up Button -->
-				<button class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
-					Inscríbete para la Beta
+				<button class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300">
+					Inscribirse a la Beta
 				</button>
 			</div>
 		</section>
 
 		<!-- Features Section -->
-		<section class="bg-gray-50 py-20">
+		<section class="min-h-screen bg-gray-50 py-20">
 			<div class="container mx-auto px-4">
+				<div class="flex flex-col gap-4 mb-12">
+					<p class="text-blue-600 text-xl font-bold text-center">Un paso adelante</p>
+					<h2 class="text-4xl font-bold text-black text-center">Funcionalidades Principales</h2>
+					<p class="text-gray-600 font-semibold text-center">En un mercado que se mueve a pasos agigantados, Qiu te da la ventaja que necesitas</p>
+				</div>
 				<div class="grid md:grid-cols-3 gap-8">
-					<div class="bg-white p-6 rounded-lg shadow-sm">
-						<h3 class="text-xl font-semibold text-gray-900 mb-4">Análisis en Tiempo Real</h3>
+					<div class="flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg">
+						<svg class="size-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="13.918001174926758 14.204000473022461 36.18299865722656 35.59099578857422" enable-background="new 0 0 64 64">
+							<g>
+								<path fill="#FFFFFF00" stroke="#536DFEFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M41.34,41.763H22.679c-4.424,0-8.011-3.586-8.011-8.011V22.965c0-4.424,3.586-8.011,8.011-8.011H41.34c4.424,0,8.011,3.586,8.011,8.011v10.787C49.35,38.176,45.764,41.763,41.34,41.763z"/>
+							</g>
+							<g>
+								<path fill="none" stroke="#536DFEFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M26.584,42.693v5.443 M37.052,42.693v5.443 M22.943,49.045h18.206"/>
+							</g>
+							<g>
+								<path fill="none" stroke="#536DFE" stroke-width="1.5" stroke-miterlimit="10" d="M15.645,24.479h32.727 M23.338,24.479v16.305"/>
+							</g>
+						</svg>
+						<h3 class="text-xl font-bold text-gray-900">Análisis en Tiempo Real</h3>
 						<p class="text-gray-600">Monitorea los precios y estrategias de tu competencia al instante</p>
 					</div>
-					<div class="bg-white p-6 rounded-lg shadow-sm">
-						<h3 class="text-xl font-semibold text-gray-900 mb-4">Tendencias de Mercado</h3>
+					<div class="flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg">
+						<svg class="size-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="17.227001190185547 14.0600004196167 29.545001983642578 35.88100051879883" enable-background="new 0 0 64 64">
+							<g>
+								<g>
+								</g>
+								<path fill="#FFFFFF00" stroke="#536DFEFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M24.099,14.81h15.801c3.381,0,6.122,2.741,6.122,6.122v22.137c0,3.381-2.741,6.122-6.122,6.122H24.099c-3.381,0-6.122-2.741-6.122-6.122V20.932C17.978,17.551,20.718,14.81,24.099,14.81z"/>
+							</g>
+							<g>
+								<g>
+									<line fill="none" stroke="#536DFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="25" y1="37.038" x2="32" y2="37.038"/>
+									<line fill="none" stroke="#536DFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="25" y1="42.288" x2="35.5" y2="42.288"/>
+								</g>
+								<g>
+									<polyline fill="none" stroke="#536DFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="25,29.341 28.5,24.788 32.795,29.341 39,23.135"/>
+									<polyline fill="none" stroke="#536DFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="39,28.306 39,23.135 33.829,23.135"/>
+								</g>
+							</g>
+						</svg>
+						<h3 class="text-xl font-bold text-gray-900">Tendencias de Mercado</h3>
 						<p class="text-gray-600">Identifica patrones y oportunidades en tu nicho de mercado</p>
 					</div>
-					<div class="bg-white p-6 rounded-lg shadow-sm">
-						<h3 class="text-xl font-semibold text-gray-900 mb-4">Reportes Detallados</h3>
+					<div class="flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg">
+						<svg class="size-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="17.25 13.716001510620117 29.5 36.569000244140625" enable-background="new 0 0 64 64">
+							<g>
+								<g>
+								</g>			
+								<path fill="#FFFFFF00" stroke="#536DFEFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M38.551,49.535H25.449c-4.114,0-7.449-3.335-7.449-7.449V21.915c0-4.114,3.335-7.449,7.449-7.449h13.102c4.114,0,7.449,3.335,7.449,7.449v20.171C46,46.199,42.665,49.535,38.551,49.535z"/>
+							</g>
+							<g>
+								<circle fill="none" stroke="#536DFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="32" cy="26.75" r="7"/>
+								<line fill="none" stroke="#536DFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="26.75" y1="39" x2="37.25" y2="39"/>
+								<line fill="none" stroke="#536DFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="26.75" y1="44.25" x2="37.25" y2="44.25"/>
+								<polyline fill="none" stroke="#536DFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="32,19.75 32,26.75 39,26.75"/>
+							</g>
+						</svg>
+						<h3 class="text-xl font-bold text-gray-900">Reportes Detallados</h3>
 						<p class="text-gray-600">Obtén insights valiosos con reportes personalizados</p>
 					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Promo Section -->
+		<section class="min-h-screen grid grid-cols-2  bg-white py-20">
+			<div class="container flex flex-col justify-evenly gap-4 mx-auto px-8">
+				<div class="flex flex-col gap-4">
+					<h2 class="text-4xl font-bold text-black text-start">Una herramienta fácil de usar.</h2>
+					<p class="text-gray-600 font-semibold text-start">Priorizamos que Qiu sea fácil de usar para que puedas concentrarte en lo que realmente importa: <span class="text-blue-600">tu negocio</span>.<br/>
+						No pierdas tiempo configurando demasiado, ni aprendiendo a usar herramientas complicadas, Qiu te tiene cubierto.</p>
+				</div>
+				<div class="container flex flex-col items-start justify-center gap-4 mx-auto">
+					<!-- Sign Up Button -->
+					<button class="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
+						Inscribirse a la Beta
+					</button>
+				</div>
+			</div>
+			<div class="grid grid-cols-2 gap-8 px-8">
+				<div class="bg-[url('/images/section2-2.jpg')] bg-cover bg-center row-span-2 h-full w-full"></div>
+				<div class="grid place-items-center bg-gradient-to-br from-blue-700 to-violet-800 w-full">
+					<div class="flex flex-col">
+						<p class="text-white text-6xl font-bold text-left"><span class="text-4xl mr-[-3%]">x</span>10</p>
+						<p class="text-white text-left text-2xl font-bold">Más rápido</p>
+						<p class="text-white text-center font-semibold">Que hacerlo manualmente</p>
+					</div>
+				</div>
+				<div class="bg-[url('/images/section2-3.jpg')] bg-cover bg-center h-[100%] w-full"></div>
+			</div>
+		</section>
+		<section class="grid place-items-center min-h-screen bg-gradient-to-br from-blue-700 via-violet-800 to-blue-900 py-20">
+			<div class="grid place-items-center h-full mx-auto px-4">
+				<div class="flex flex-col items-center gap-8">
+					<div class="flex flex-col gap-2">
+						<h2 class="text-4xl font-bold text-white text-center">¿Qué esperas?</h2>
+						<p class="text-white text-center font-semibold">Inscríbete a la Beta y descubre cómo Qiu puede ayudarte a mejorar tu negocio</p>
+						<p class="text-white/80 text-center font-semibold">Te notificaremos por correo electrónico en cuanto esté disponible</p>
+					</div>
+					
+					<!-- Sign Up Button -->
+					<button class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300 w-fit">
+							Inscribirse a la Beta
+						</button>
 				</div>
 			</div>
 		</section>
@@ -75,28 +164,33 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <script>
-	// Set the date we're counting down to (30 days from now)
-	const countDownDate = new Date();
-	countDownDate.setDate(countDownDate.getDate() + 30);
+	// Obtener la fecha de lanzamiento desde las variables de entorno
+	const launchDate = new Date(import.meta.env.PUBLIC_LAUNCH_DATE);
 
 	// Update the countdown every 1 second
 	const countdown = setInterval(function() {
 		const now = new Date().getTime();
-		const distance = countDownDate.getTime() - now;
+		const distance = launchDate.getTime() - now;
 
 		const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 		const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 		const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 		const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-		document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
-		document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-		document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-		document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+		const daysElement = document.getElementById("days");
+		const hoursElement = document.getElementById("hours");
+		const minutesElement = document.getElementById("minutes");
+		const secondsElement = document.getElementById("seconds");
+		const countdownElement = document.getElementById("countdown");
+
+		if (daysElement) daysElement.innerHTML = days.toString().padStart(2, '0');
+		if (hoursElement) hoursElement.innerHTML = hours.toString().padStart(2, '0');
+		if (minutesElement) minutesElement.innerHTML = minutes.toString().padStart(2, '0');
+		if (secondsElement) secondsElement.innerHTML = seconds.toString().padStart(2, '0');
 
 		if (distance < 0) {
 			clearInterval(countdown);
-			document.getElementById("countdown").innerHTML = "¡LANZAMIENTO COMPLETADO!";
+			if (countdownElement) countdownElement.innerHTML = "¡LANZAMIENTO COMPLETADO!";
 		}
 	}, 1000);
 </script>
