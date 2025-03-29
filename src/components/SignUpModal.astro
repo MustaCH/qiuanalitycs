@@ -1,6 +1,4 @@
----
-import { actions } from "astro:actions";
----
+
 
 <div id="signUpModal" class="fixed inset-0 bg-black/0 backdrop-blur-0 hidden items-center justify-center z-50 transition-all duration-300">
     <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative transform translate-y-4 opacity-0 transition-all duration-300">
@@ -15,7 +13,7 @@ import { actions } from "astro:actions";
             <p class="text-gray-600 text-center text-xs">Te enviaremos un email una vez que esté disponible.</p>
         </div>
         
-        <form id="signUpForm" class="space-y-4">
+        <form id="signUpForm" action="/api/send" class="space-y-4">
             <div>
                 <label for="firstName" class="block text-sm font-medium text-gray-700">Nombre</label>
                 <input type="text" id="firstName" name="firstName" placeholder="Don" required
