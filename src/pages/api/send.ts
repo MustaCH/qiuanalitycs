@@ -12,7 +12,7 @@ export const GET: APIRoute = async () => {
     const emailText = await render(emailContent, { plainText: true });
   
     const { data, error } = await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>",
+      from: "Qiu <onboarding@resend.dev>",
       to: ["polettiignacio7@gmail.com"],
       subject: "Bienvenido a la Beta de Qiu",
       html: emailHtml,

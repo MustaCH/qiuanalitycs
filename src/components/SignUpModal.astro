@@ -1,4 +1,18 @@
+---
+import { isInputError } from "astro:actions";
+import { actions } from "astro:actions";
 
+const result = Astro.getActionResult(actions.send);
+if (result?.data) {
+    return Astro.redirect("/");
+}
+
+if (result?.error) {
+    console.error(result.error);
+}
+
+const inputErrors = isInputError(result?.error) ? result.error.fields : {};
+---
 
 <div id="signUpModal" class="fixed inset-0 bg-black/0 backdrop-blur-0 hidden items-center justify-center z-50 transition-all duration-300">
     <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative transform translate-y-4 opacity-0 transition-all duration-300">
@@ -13,23 +27,38 @@
             <p class="text-gray-600 text-center text-xs">Te enviaremos un email una vez que esté disponible.</p>
         </div>
         
-        <form id="signUpForm" action="/api/send" class="space-y-4">
+        <form id="signUpForm" action={actions.send} method="POST" class="space-y-4">
             <div>
-                <label for="firstName" class="block text-sm font-medium text-gray-700">Nombre</label>
-                <input type="text" id="firstName" name="firstName" placeholder="Don" required
+                <label for="name" class="block text-sm font-medium text-gray-700" aria-describedby={inputErrors.name ? "name-error" : undefined}>Nombre</label>
+                <input type="text" id="name" name="name" placeholder="Don" required
                     class="mt-1 block w-full h-10 px-4 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    {inputErrors.name && (
+                        <p id="name-error" class="mt-1 text-red-500 text-sm">
+                            {inputErrors.name}
+                        </p>
+                    )}
             </div>
             
             <div>
-                <label for="lastName" class="block text-sm font-medium text-gray-700">Apellido</label>
+                <label for="lastName" class="block text-sm font-medium text-gray-700" aria-describedby={inputErrors.lastName ? "lastName-error" : undefined}>Apellido</label>
                 <input type="text" id="lastName" name="lastName" placeholder="Pepito" required
                     class="mt-1 block w-full h-10 px-4 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    {inputErrors.lastName && (
+                        <p id="lastName-error" class="mt-1 text-red-500 text-sm">
+                            {inputErrors.lastName}
+                        </p>
+                    )}
             </div>
             
             <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <label for="email" class="block text-sm font-medium text-gray-700" aria-describedby={inputErrors.email ? "email-error" : undefined}>Email</label>
                 <input type="email" id="email" name="email" placeholder="holadonpepito@gmail.com" required
                     class="mt-1 block w-full h-10 px-4 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                {inputErrors.email && (
+                    <p id="email-error" class="mt-1 text-red-500 text-sm">
+                        {inputErrors.email}
+                    </p>
+                )}
             </div>
             
             <button type="submit" id="submitButton"
