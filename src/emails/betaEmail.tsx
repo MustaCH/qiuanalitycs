@@ -1,168 +1,139 @@
 import {
-    Body,
-    Container,
-    Head,
-    Heading,
-    Hr,
-    Html,
-    Img,
-    Link,
-    Preview,
-    Section,
-    Text,
-  } from '@react-email/components';
-  
-  interface BetaEmailProps {
-    name?: string;
-    lastName?: string;
-  }
-  
-  const baseUrl = 'https://demo.react.email/'
-  
-  export default function BetaEmail({
-    name,
-    lastName,
-  }: BetaEmailProps) {
-    return (
-      <Html>
-        <Head />
-        <Body style={main}>
-          <Preview>AWS Email Verification</Preview>
-          <Container style={container}>
-            <Section style={coverSection}>
-              <Section style={imageSection}>
-                <Img
-                  src={`${baseUrl}/static/aws-logo.png`}
-                  width="75"
-                  height="45"
-                  alt="AWS's Logo"
-                />
-              </Section>
-              <Section style={upperSection}>
-                <Heading style={h1}>Gracias por registrarte en la Beta</Heading>
-                <Text style={mainText}>
-                  Ya formas parte de la lista de espera para la Beta de Qiu.
-                  Recibirás una notificación a ésta misma dirección de correo
-                  electrónico cuando se libere el acceso.
-                </Text>
-              </Section>
-              <Hr />
-              <Section style={lowerSection}>
-                <Text style={cautionText}>
-                  Mientras tanto, puedes seguirnos en nuestras redes sociales.
-                  Para estar al tanto de todas la novedades en Qiu.
-                </Text>
-              </Section>
+  Body,
+  Button,
+  Column,
+  Container,
+  Head,
+  Heading,
+  Hr,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Row,
+  Section,
+  Tailwind,
+  Text,
+} from "@react-email/components";
+
+interface BetaEmailProps {
+  name?: string;
+  lastName?: string;
+}
+
+export default function BetaEmail({ name, lastName }: BetaEmailProps) {
+  return (
+    <Html>
+      <Head />
+      <Tailwind>
+        <Body className="bg-white my-auto mx-auto font-sans px-2">
+          <Preview>Bienvenido a la beta de Qiu</Preview>
+          <Container className="border border-solid border-[#eaeaea] rounded my-[40px] mx-auto p-[20px] max-w-[465px]">
+            <Section className="mt-[32px]">
+              <Img
+                src="https://res.cloudinary.com/dfuru6l6d/image/upload/v1743442686/Isologotipo_pqjcym.png"
+                height="37"
+                alt="Qiu Logo"
+                className="my-0 mx-auto"
+              />
             </Section>
-            <Text style={footerText}>
-              This message was produced and distributed by Amazon Web Services,
-              Inc., 410 Terry Ave. North, Seattle, WA 98109. © 2022, Amazon Web
-              Services, Inc.. All rights reserved. AWS is a registered trademark
-              of{' '}
-              <Link href="https://amazon.com" target="_blank" style={link}>
-                Amazon.com
-              </Link>
-              , Inc. View our{' '}
-              <Link href="https://amazon.com" target="_blank" style={link}>
-                privacy policy
-              </Link>
-              .
+            <Heading className="text-black text-[24px] font-normal text-center p-0 my-[30px] mx-0">
+              Gracias{" "}
+              <strong>
+                {name} {lastName}
+              </strong>{" "}
+              por sumarte al a beta de <strong>Qiu</strong>
+            </Heading>
+            <Text className="text-black text-[14px] leading-[24px]">
+              Hola {name},
             </Text>
+            <Text className="text-black text-[14px] leading-[24px]">
+              Ya formas parte del grupo de los primeros usuarios que van a
+              probar la Beta de <strong>Qiu!</strong>
+            </Text>
+            <Section>
+              <Text className="text-black text-[14px] leading-[24px]">
+                Te enviaremos un correo con el link para que puedas acceder a la
+                Beta de Qiu en cuanto esté lista.
+              </Text>
+              <Text className="text-black text-[14px] leading-[24px]">
+                Mientras tanto, puedes seguirnos en nuestras redes sociales para
+                estar al tanto todas de las novedades.
+              </Text>
+            </Section>
+            <Hr className="border border-solid border-[#eaeaea] my-[26px] mx-0 w-full" />
+            <Section className="text-center">
+              <table className="w-full">
+                <tr className="w-full">
+                  <td align="center">
+                    <Img
+                      alt="Qiu"
+                      height="42"
+                      src="https://res.cloudinary.com/dfuru6l6d/image/upload/v1743442686/Isologotipo_pqjcym.png"
+                    />
+                  </td>
+                </tr>
+                <tr className="w-full">
+                  <td align="center">
+                    <Text className="my-[8px] text-[16px] font-semibold leading-[24px] text-gray-900">
+                      Qiu Analytics
+                    </Text>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <Row className="table-cell h-[44px] w-[56px] align-bottom">
+                      <Column className="pr-[8px]">
+                        <Link href="#">
+                          <Img
+                            className="opacity-25"
+                            alt="Discord"
+                            height="36"
+                            src="https://res.cloudinary.com/dfuru6l6d/image/upload/v1743442754/brand-discord_zldji6.png"
+                            width="36"
+                          />
+                        </Link>
+                      </Column>
+                      <Column className="pr-[8px]">
+                        <Link href="https://x.com/QiuAnalitycs">
+                          <Img
+                            alt="X"
+                            height="36"
+                            src="https://react.email/static/x-logo.png"
+                            width="36"
+                          />
+                        </Link>
+                      </Column>
+                      <Column>
+                        <Link href="https://www.instagram.com/qiuanalitycs/?utm_source=ig_web_button_share_sheet">
+                          <Img
+                            alt="Instagram"
+                            height="36"
+                            src="https://react.email/static/instagram-logo.png"
+                            width="36"
+                          />
+                        </Link>
+                      </Column>
+                    </Row>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <Text className="mb-0 mt-[4px] text-[16px] font-semibold leading-[24px] text-gray-500">
+                      team@qiuanalitycs.com
+                    </Text>
+                  </td>
+                </tr>
+              </table>
+            </Section>
           </Container>
         </Body>
-      </Html>
-    );
-  }
-  
-    BetaEmail.PreviewProps = {
-        name: 'Ignacio',
-        lastName: 'Poletti',
-    } satisfies BetaEmailProps;
-    
-  const main = {
-    backgroundColor: '#fff',
-    color: '#212121',
-  };
-  
-  const container = {
-    padding: '20px',
-    margin: '0 auto',
-    backgroundColor: '#eee',
-  };
-  
-  const h1 = {
-    color: '#333',
-    fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-    fontSize: '20px',
-    fontWeight: 'bold',
-    marginBottom: '15px',
-  };
-  
-  const link = {
-    color: '#2754C5',
-    fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-    fontSize: '14px',
-    textDecoration: 'underline',
-  };
-  
-  const text = {
-    color: '#333',
-    fontFamily:
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-    fontSize: '14px',
-    margin: '24px 0',
-  };
-  
-  const imageSection = {
-    backgroundColor: '#252f3d',
-    display: 'flex',
-    padding: '20px 0',
-    alignItems: 'center',
-    justifyContent: 'center',
-  };
-  
-  const coverSection = { backgroundColor: '#fff' };
-  
-  const upperSection = { padding: '25px 35px' };
-  
-  const lowerSection = { padding: '25px 35px' };
-  
-  const footerText = {
-    ...text,
-    fontSize: '12px',
-    padding: '0 20px',
-  };
-  
-  const verifyText = {
-    ...text,
-    margin: 0,
-    fontWeight: 'bold',
-    textAlign: 'center' as const,
-  };
-  
-  const codeText = {
-    ...text,
-    fontWeight: 'bold',
-    fontSize: '36px',
-    margin: '10px 0',
-    textAlign: 'center' as const,
-  };
-  
-  const validityText = {
-    ...text,
-    margin: '0px',
-    textAlign: 'center' as const,
-  };
-  
-  const verificationSection = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  };
-  
-  const mainText = { ...text, marginBottom: '14px' };
-  
-  const cautionText = { ...text, margin: '0px' };
-  
+      </Tailwind>
+    </Html>
+  );
+}
+
+BetaEmail.PreviewProps = {
+  name: "Ignacio",
+  lastName: "Poletti",
+} satisfies BetaEmailProps;
