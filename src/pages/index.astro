@@ -1,6 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SignUpModal from '../components/SignUpModal.astro';
+import { isInputError, actions } from "astro:actions";
+
+const result = Astro.getActionResult(actions.send);
+
+
+if (result?.error) {
+    console.error(result.error);
+}
+
+const inputErrors = isInputError(result?.error) ? result.error.fields : {};
 
 ---
 
@@ -10,14 +19,7 @@ import SignUpModal from '../components/SignUpModal.astro';
 		<section class="container mx-auto px-4 py-20">
 			<div class="max-w-4xl mx-auto text-center">
 				<div class="flex flex-col items-center gap-4">
-						<svg class="size-52" id="Capa_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950.02 540.56">
-							<g id="Capa_1-2"><polygon points="772.01 309.3 772 309.3 772 308.3 772.01 309.3"/>
-								<path d="M542.07,298.04c-40.89,7.65-53.71-30.14-57.71-52.36,0-.01,0-.03,0-.05-.36-2.87-.77-5.73-1.24-8.58-9.29-56.27-41.36-108.51-92.84-141.87C291.42,31.15,158.13,61.62,96.93,162.23c-59.4,97.64-29.66,225.23,67.38,286.38,60.05,37.84,131.93,41.49,192.81,16.09,22.04-5.22,55.43-6.5,66.19,28.72-.7.78-1.44,1.54-2.21,2.31-94.05,64.94-212.08,55.51-301.54-3.75C-8.95,406.85-40.44,232.8,57.4,106.08,130.17,11.83,285.2-29.56,391.99,23.14c105.25,51.95,159.53,142.23,150.08,274.9Z"/>
-								<circle cx="493.43" cy="406.85" r="46.57"/><path d="M449.01,343.36l-.41,2.71s-10.66,54.44-86.95,21.92h-.01s-162.4-102.36-162.4-102.36c-5.51-3.47-9.72-8.22-12.48-13.61,0,0,10.88-55.59,89.4-20.85l162.8,102.62c4.09,2.58,7.45,5.85,10.05,9.58Z"/>
-								<path d="M603.66,504.07l2.53,1.05s52.07,19.14,63.85-62.96h0s-3.24-191.95-3.24-191.95c-.11-6.51-1.99-12.57-5.16-17.73,0,0-53.17-19.54-64.21,65.61l3.26,192.41c.08,4.83,1.14,9.41,2.97,13.56Z"/>
-								<path d="M950.02,430.72c0,10.82-2.61,28.61-4.83,35.45-9.31,28.84-25.34,37.99-38.29,40.26-11.29,1.97-20.2-1.31-20.2-1.31l-2.52-1.05c-5.81-2.41-3.17-30.73-3.2-35.22.05,7.19-7.73,16.6-12.49,21.31-5.98,5.91-13.47,9.75-21.21,12.82-19.17,7.6-41.31,8.26-61.62,6.65-6.01-.48-12.37-1.34-19.18-2.56-42.55-7.63-63.67-47.04-61.46-78.32l-2.21-130.64c6.31-48.67,26.61-62.23,42.43-66.6,14.75-4.07,24.92-.94,24.92-.94,3.17,5.16,1.92,13.15,2.02,19.66,0,0,2.49,147.33,2.49,147.35-.02.29.12,3.11.12,7.42,0,29.03,19.84,44.56,51.69,38.44h.04c50.81-19.76,50.9-54.12,51.17-76.2.33-28.02-1.74-38.17-.26-67.33.65-12.85,6.97-35.65,15.08-45.65,9.67-11.93,25.41-21.65,40.99-23.47,2.9-.34,13.94-1.09,14.07,1.83.28,6.26-.43,11.54-.33,17.65,1.02,64.22,1.82,116.24,2.78,180.46Z"/>
-							</g>
-						</svg>
+					<svg class="w-46" id="Capa_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950.02 540.56"><defs><style>.cls-1{fill:#f2f2f2;}</style></defs><g id="Capa_1-2"><polygon points="772.01 309.3 772 309.3 772 308.3 772.01 309.3"/><path class="cls-1" d="M542.07,298.04c-40.89,7.65-53.71-30.14-57.71-52.36,0-.01,0-.03,0-.05-.36-2.87-.77-5.73-1.24-8.58-9.29-56.27-41.36-108.51-92.84-141.87C291.42,31.15,158.13,61.62,96.93,162.23c-59.4,97.64-29.66,225.23,67.38,286.38,60.05,37.84,131.93,41.49,192.81,16.09,22.04-5.22,55.43-6.5,66.19,28.72-.7.78-1.44,1.54-2.21,2.31-94.05,64.94-212.08,55.51-301.54-3.75C-8.95,406.85-40.44,232.8,57.4,106.08,130.17,11.83,285.2-29.56,391.99,23.14c105.25,51.95,159.53,142.23,150.08,274.9Z"/><circle class="cls-1" cx="493.43" cy="406.85" r="46.57"/><path class="cls-1" d="M449.01,343.36l-.41,2.71s-10.66,54.44-86.95,21.92h-.01s-162.4-102.36-162.4-102.36c-5.51-3.47-9.72-8.22-12.48-13.61,0,0,10.88-55.59,89.4-20.85l162.8,102.62c4.09,2.58,7.45,5.85,10.05,9.58Z"/><path class="cls-1" d="M603.66,504.07l2.53,1.05s52.07,19.14,63.85-62.96h0s-3.24-191.95-3.24-191.95c-.11-6.51-1.99-12.57-5.16-17.73,0,0-53.17-19.54-64.21,65.61l3.26,192.41c.08,4.83,1.14,9.41,2.97,13.56Z"/><path class="cls-1" d="M950.02,430.72c0,10.82-2.61,28.61-4.83,35.45-9.31,28.84-25.34,37.99-38.29,40.26-11.29,1.97-20.2-1.31-20.2-1.31l-2.52-1.05c-5.81-2.41-3.17-30.73-3.2-35.22.05,7.19-7.73,16.6-12.49,21.31-5.98,5.91-13.47,9.75-21.21,12.82-19.17,7.6-41.31,8.26-61.62,6.65-6.01-.48-12.37-1.34-19.18-2.56-42.55-7.63-63.67-47.04-61.46-78.32l-2.21-130.64c6.31-48.67,26.61-62.23,42.43-66.6,14.75-4.07,24.92-.94,24.92-.94,3.17,5.16,1.92,13.15,2.02,19.66,0,0,2.49,147.33,2.49,147.35-.02.29.12,3.11.12,7.42,0,29.03,19.84,44.56,51.69,38.44h.04c50.81-19.76,50.9-54.12,51.17-76.2.33-28.02-1.74-38.17-.26-67.33.65-12.85,6.97-35.65,15.08-45.65,9.67-11.93,25.41-21.65,40.99-23.47,2.9-.34,13.94-1.09,14.07,1.83.28,6.26-.43,11.54-.33,17.65,1.02,64.22,1.82,116.24,2.78,180.46Z"/></g></svg>					
 					<h1 class="text-5xl font-bold text-white mb-6">
 						Análisis de Competencia para<br/>E-commerce
 					</h1>
@@ -66,13 +68,20 @@ import SignUpModal from '../components/SignUpModal.astro';
 
 		<!-- Features Section -->
 		<section class="min-h-screen grid place-content-center bg-gray-50 py-20">
-			<div class="container mx-auto px-4">
+			<div class="container grid grid-cols-1 md:grid-cols-2 mx-auto px-4">
 				<div class="flex flex-col gap-4 mb-12">
-					<p class="text-blue-600 text-xl font-bold text-center">Un paso adelante</p>
-					<h2 class="text-4xl font-bold text-black text-center">Funcionalidades Principales</h2>
-					<p class="text-gray-600 font-semibold text-center">En un mercado que se mueve a pasos agigantados, Qiu te da la ventaja que necesitas</p>
+					<p class="text-blue-600 text-xl font-bold ">Un paso adelante</p>
+					<h2 class="text-4xl font-bold text-black ">Funcionalidades Principales</h2>
+					<p class="text-gray-600 font-semibold ">Basa tus decisiones en datos, no en suposiciones</p>
+					<p class="text-gray-600 font-semibold ">¿Sabes qué productos están vendiendo tus competidores, a qué precios y cómo promocionan su catálogo? Nuestra plataforma de análisis de competencia para e-commerce te da insights en tiempo real para que tomes decisiones inteligentes.</p>
+					<ul class="text-gray-600 font-semibold list-disc list-inside">
+						<li><b class="text-blue-600">Descubre</b> tendencias y oportunidades ocultas en tu nicho.</li>
+						<li><b class="text-blue-600">Compara</b> precios, descuentos y estrategias de tus competidores.</li>
+						<li><b class="text-blue-600">Optimiza</b> tu catálogo y campañas con datos accionables.</li>
+					</ul>
+					<p class="text-gray-600 font-semibold">Deja de actuar a ciegas y empieza a vender con ventaja.</p>
 				</div>
-				<div class="grid md:grid-cols-3 gap-8">
+				<div class="grid md:grid-cols-2 gap-8">
 					<div class="flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg">
 						<svg class="size-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="13.918001174926758 14.204000473022461 36.18299865722656 35.59099578857422" enable-background="new 0 0 64 64">
 							<g>
@@ -85,8 +94,8 @@ import SignUpModal from '../components/SignUpModal.astro';
 								<path fill="none" stroke="#536DFE" stroke-width="1.5" stroke-miterlimit="10" d="M15.645,24.479h32.727 M23.338,24.479v16.305"/>
 							</g>
 						</svg>
-						<h3 class="text-xl font-bold text-gray-900">Análisis en Tiempo Real</h3>
-						<p class="text-gray-600">Monitorea los precios y estrategias de tu competencia al instante</p>
+						<h3 class="text-xl font-bold text-gray-900">Monitoreo de Precios</h3>
+						<p class="text-gray-600">Rastrea cambios de precios en los productos de tus competidores y recibe alertas cuando bajen o suban. Ajusta tu estrategia de precios para mantenerte competitivo sin sacrificar márgenes.</p>
 					</div>
 					<div class="flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg">
 						<svg class="size-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="17.227001190185547 14.0600004196167 29.545001983642578 35.88100051879883" enable-background="new 0 0 64 64">
@@ -106,10 +115,10 @@ import SignUpModal from '../components/SignUpModal.astro';
 								</g>
 							</g>
 						</svg>
-						<h3 class="text-xl font-bold text-gray-900">Tendencias de Mercado</h3>
-						<p class="text-gray-600">Identifica patrones y oportunidades en tu nicho de mercado</p>
+						<h3 class="text-xl font-bold text-gray-900">Análisis de Catálogos</h3>
+						<p class="text-gray-600">Descubre qué productos nuevos lanzan tus competidores, cómo los describen y qué características destacan. Identifica gaps en tu oferta y oportunidades para diferenciarte.</p>
 					</div>
-					<div class="flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg">
+					<!-- <div class="flex flex-col gap-4 bg-white p-6 rounded-lg shadow-lg">
 						<svg class="size-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="17.25 13.716001510620117 29.5 36.569000244140625" enable-background="new 0 0 64 64">
 							<g>
 								<g>
@@ -125,7 +134,7 @@ import SignUpModal from '../components/SignUpModal.astro';
 						</svg>
 						<h3 class="text-xl font-bold text-gray-900">Reportes Detallados</h3>
 						<p class="text-gray-600">Obtén insights valiosos con reportes personalizados</p>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</section>
@@ -194,11 +203,85 @@ import SignUpModal from '../components/SignUpModal.astro';
 				</div>
 			</div>
 		</section>
+		<!-- Modal -->
+		<div id="signUpModal" class="fixed inset-0 bg-black/0 backdrop-blur-0 hidden items-center justify-center z-50 transition-all duration-300">
+			<div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative transform translate-y-4 opacity-0 transition-all duration-300">
+				<button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+				<div class="flex flex-col items-center justify-center gap-1 mb-6">
+					<h2 class="text-3xl font-bold text-gray-900 mb-4">Inscríbete a la Beta</h2>
+					<p class="text-gray-600 text-center font-semibold text-sm">Registrate para acceder a la beta de nuestra plataforma y ser de los primeros en probarla.</p>
+					<p class="text-gray-600 text-center text-xs">Te enviaremos un email una vez que esté disponible.</p>
+				</div>
+				
+				<form id="signUpForm" action={actions.send} method="POST" class="space-y-4">
+					<div>
+						<label for="name" class="block text-sm font-medium text-gray-700" aria-describedby={inputErrors.name ? "name-error" : undefined}>Nombre</label>
+						<input type="text" id="name" name="name" placeholder="Don" required
+							class="mt-1 block w-full h-10 px-4 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+						{inputErrors.name && (
+							<p id="name-error" class="mt-1 text-red-500 text-sm">
+								{inputErrors.name}
+							</p>
+						)}
+					</div>
+					
+					<div>
+						<label for="lastName" class="block text-sm font-medium text-gray-700" aria-describedby={inputErrors.lastName ? "lastName-error" : undefined}>Apellido</label>
+						<input type="text" id="lastName" name="lastName" placeholder="Pepito" required
+							class="mt-1 block w-full h-10 px-4 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+						{inputErrors.lastName && (
+							<p id="lastName-error" class="mt-1 text-red-500 text-sm">
+								{inputErrors.lastName}
+							</p>
+						)}
+					</div>
+					
+					<div>
+						<label for="email" class="block text-sm font-medium text-gray-700" aria-describedby={inputErrors.email ? "email-error" : undefined}>Email</label>
+						<input type="email" id="email" name="email" placeholder="holadonpepito@gmail.com" required
+							class="mt-1 block w-full h-10 px-4 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+						{inputErrors.email && (
+							<p id="email-error" class="mt-1 text-red-500 text-sm">
+								{inputErrors.email}
+							</p>
+						)}
+					</div>
+		
+					<div id="formButtonContainer"> <!-- Nuevo contenedor -->
+						<button id="submitButton" type="submit" 
+						  class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200">
+						  <span class="normal-state">Enviar</span>
+						  <span class="loading-state hidden">
+							<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+							  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+							  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+							</svg>
+							Enviando...
+						  </span>
+						</button>
+					  </div>
+				</form>
+		
+				<!-- Mensaje de éxito -->
+				<div id="successMessage" class="hidden mt-4 p-4 bg-green-50 text-green-700 rounded-md">
+					<p class="text-center">¡Gracias por registrarte! Te hemos enviado un email de confirmación.</p>
+				</div>
+		
+				<!-- Mensaje de error -->
+				<div id="errorMessage" class="hidden mt-4 p-4 bg-red-50 text-red-700 rounded-md">
+					<p class="text-center">Hubo un error al enviar el formulario. Por favor, intenta nuevamente.</p>
+				</div>
+			</div>
+		</div>
 	</main>
-	<SignUpModal />
 </Layout>
 
 <script>
+
 	const launchDate = new Date(import.meta.env.PUBLIC_LAUNCH_DATE);
 
 	const countdown = setInterval(function() {
@@ -226,5 +309,107 @@ import SignUpModal from '../components/SignUpModal.astro';
 			if (countdownElement) countdownElement.innerHTML = "¡LANZAMIENTO COMPLETADO!";
 		}
 	}, 1000);
+
+
+	//Modal
+	import { actions } from "astro:actions";
+
+	const modal = document.getElementById('signUpModal');
+	const modalContent = modal?.querySelector('div');
+	const closeModal = document.getElementById('closeModal');
+	const signUpForm = document.getElementById('signUpForm') as HTMLFormElement;
+	const signUpButtons = document.querySelectorAll('[class*="signup"]');
+	const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+	const successMessage = document.getElementById('successMessage');
+	const errorMessage = document.getElementById('errorMessage');
+	const normalState = submitButton?.querySelector('.normal-state');
+	const loadingState = submitButton?.querySelector('.loading-state');
+	const formButtonContainer = document.getElementById('formButtonContainer');
+
+
+	if (!modal || !closeModal || !signUpForm || !modalContent || !submitButton || !successMessage || !errorMessage || !normalState || !loadingState) {
+		console.error('No se encontraron los elementos necesarios del modal');
+	} else {
+		// Función para abrir el modal
+		const openModal = () => {
+			modal.classList.add('flex', 'bg-black/50', 'backdrop-blur-sm');
+			modal.classList.remove('hidden');
+			// Pequeño delay para la animación
+			setTimeout(() => {
+				modalContent.classList.remove('translate-y-4', 'opacity-0');
+			}, 10);
+		};
+
+		// Función para cerrar el modal con animación
+		const closeModalWithAnimation = () => {
+			modal.classList.remove('bg-black/50', 'backdrop-blur-sm');
+			modalContent.classList.add('translate-y-4', 'opacity-0');
+			setTimeout(() => {
+				modal.classList.add('hidden');
+				modal.classList.remove('flex');
+				// Resetear el formulario, mensajes y visibilidad del botón
+				signUpForm.reset();
+				successMessage.classList.add('hidden');
+				errorMessage.classList.add('hidden');
+				if (formButtonContainer) formButtonContainer.classList.remove('hidden');
+				normalState.classList.remove('hidden');
+				loadingState.classList.add('hidden');
+				submitButton.disabled = false;
+			}, 300);
+		};
+
+		// Abrir modal
+		signUpButtons.forEach(button => {
+			button.addEventListener('click', openModal);
+		});
+
+		// Cerrar modal
+		closeModal.addEventListener('click', closeModalWithAnimation);
+
+		// Cerrar modal al hacer clic fuera
+		modal.addEventListener('click', (e: MouseEvent) => {
+			if (e.target === modal) {
+				closeModalWithAnimation();
+			}
+		});
+
+		signUpForm.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		
+		// Mostrar estado de carga
+		normalState.classList.add('hidden');
+		loadingState.classList.remove('hidden');
+		submitButton.disabled = true;
+		
+		try {
+			const formData = new FormData(signUpForm);
+			const response = await actions.send(formData);
+			
+			if (response?.error) {
+				throw new Error(response.error.message || "Error al enviar");
+			}
+			
+			// Mostrar mensaje de éxito y ocultar botón
+			successMessage.classList.remove('hidden');
+			errorMessage.classList.add('hidden');
+			if (formButtonContainer) formButtonContainer.classList.add('hidden');
+			
+			// Cerrar automáticamente después de 3 segundos
+			setTimeout(() => {
+				closeModalWithAnimation();
+			}, 3000);
+			
+		} catch (error) {
+			// Mostrar mensaje de error (pero mantener el botón visible)
+			errorMessage.classList.remove('hidden');
+			successMessage.classList.add('hidden');
+			
+			// Restaurar botón
+			normalState.classList.remove('hidden');
+			loadingState.classList.add('hidden');
+			submitButton.disabled = false;
+		}
+	});
+	}
 
 </script>
