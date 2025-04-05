@@ -1,5 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
@@ -13,3 +19,18 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+
+//Función para verificar si el email está registrado
+
+export async function isEmailRegistered(email: string): Promise<boolean> {
+  try {
+    const usersRef = collection(db, "beta_users");
+    const q = query(usersRef, where("email", "==", email.toLowerCase().trim()));
+    const snapshot = await getDocs(q);
+
+    return !snapshot.empty;
+  } catch (error) {
+    console.error("Error checking email:", error);
+    return false;
+  }
+}

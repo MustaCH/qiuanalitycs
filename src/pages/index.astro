@@ -248,7 +248,7 @@ const signupSuccess = searchParams.get('signup') === 'success';
 					</div>
 					
 					<div>
-						<label for="email" class="block text-sm font-medium text-gray-700" aria-describedby={inputErrors.email ? "email-error" : undefined}>Email</label>
+						<label for="email" class="block text-sm font-medium text-gray-700" aria-describedby={inputErrors.email ? "email-error" : undefined} onchange="checkEmailAvailability(this.value)">Email</label>
 						<input type="email" id="email" name="email" placeholder="holadonpepito@gmail.com" required
 							class="mt-1 block w-full h-10 px-4 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
 						{inputErrors.email && (
@@ -256,9 +256,10 @@ const signupSuccess = searchParams.get('signup') === 'success';
 								{inputErrors.email}
 							</p>
 						)}
+						<span id="emailStatus" class="hidden text-sm"></span>
 					</div>
 		
-					<div id="formButtonContainer"> <!-- Nuevo contenedor -->
+					<div id="formButtonContainer"> 
 						<button id="submitButton" type="submit" 
 						  class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200">
 						  <span class="normal-state">Enviar</span>
@@ -335,6 +336,44 @@ const signupSuccess = searchParams.get('signup') === 'success';
 	// Verificar si hay un parámetro de éxito en la URL
 	const urlParams = new URLSearchParams(window.location.search);
 	const signupSuccess = urlParams.get('signup') === 'success';
+
+	async function checkEmailAvailability(email: string): Promise<void> {
+		const emailStatus = document.getElementById('emailStatus');
+		const submitButton = document.getElementById('submitButton') as HTMLButtonElement;
+		
+		if (!email || !emailStatus || !submitButton) return;
+
+		try {
+			const response = await fetch('/api/check-email?email=' + encodeURIComponent(email));
+			const { available } = await response.json();
+			
+			if (available) {
+				emailStatus.classList.add('hidden');
+				submitButton.disabled = false;
+			} else {
+				emailStatus.classList.remove('hidden');
+				emailStatus.textContent = '❌ Email ya registrado';
+				emailStatus.className = 'text-red-500';
+				submitButton.disabled = true;
+			}
+		} catch (error) {
+			console.error('Error al verificar email:', error);
+			if (emailStatus) {
+				emailStatus.classList.remove('hidden');
+				emailStatus.textContent = '❌ Error al verificar email';
+				emailStatus.className = 'text-red-500';
+			}
+		}
+	}
+
+	// Agregar el evento al input de email
+	const emailInput = document.getElementById('email') as HTMLInputElement;
+	if (emailInput) {
+		emailInput.addEventListener('input', (e) => {
+			const target = e.target as HTMLInputElement;
+			checkEmailAvailability(target.value);
+		});
+	}
 
 	// Si hay éxito, mostrar el modal con el mensaje de éxito
 	if (signupSuccess) {
