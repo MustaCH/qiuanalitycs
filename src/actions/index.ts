@@ -73,10 +73,8 @@ export const server = {
             "Error al enviar email al equipo:",
             teamEmailResult.error
           );
-          // No lanzamos el error aquí para no afectar la experiencia del usuario
         }
 
-        // Redirigir a la página principal con un parámetro de éxito
         return {
           success: true,
           redirect: "/?signup=success",
