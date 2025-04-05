@@ -1,11 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from "firebase/firestore/lite";
+import { getAuth } from "firebase/auth";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
   authDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -16,6 +14,26 @@ const firebaseConfig = {
   measurementId: import.meta.env.PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// Inicialización condicional para SSR
+let app;
+let db;
+let auth;
+
+if (typeof window !== "undefined") {
+  const { initializeApp } = require("firebase/app");
+  const { getFirestore } = require("firebase/firestore");
+  const { getAuth } = require("firebase/auth");
+
+  app = initializeApp(firebaseConfig);
+  db = getFirestore(app);
+  auth = getAuth(app);
+} else {
+  // Configuración para SSR (opcional)
+  const { initializeApp } = await import("firebase/app");
+  const { getFirestore } = await import("firebase/firestore");
+
+  app = initializeApp(firebaseConfig);
+  db = getFirestore(app);
+}
+
+export { db, auth };

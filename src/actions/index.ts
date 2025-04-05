@@ -3,6 +3,8 @@ import { render } from "@react-email/render";
 import { defineAction } from "astro:actions";
 import BetaEmail from "../emails/betaEmail";
 import { z } from "astro:schema";
+import { db } from "../lib/firebase-admin";
+import { doc, setDoc } from "firebase/firestore";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
@@ -21,6 +23,16 @@ export const server = {
         const userEmailHtml = await render(userEmailContent);
         const userEmailText = await render(userEmailContent, {
           plainText: true,
+        });
+
+        const userId = crypto.randomUUID();
+        await setDoc(doc(db, "beta_users", userId), {
+          name,
+          lastName,
+          email,
+          signupDate: new Date().toISOString(),
+          accessGranted: false,
+          accessToken: crypto.randomUUID(),
         });
 
         const userEmailResult = await resend.emails.send({
