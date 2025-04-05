@@ -76,7 +76,11 @@ export const server = {
           // No lanzamos el error aquí para no afectar la experiencia del usuario
         }
 
-        return userEmailResult.data;
+        // Redirigir a la página principal con un parámetro de éxito
+        return {
+          success: true,
+          redirect: "/?signup=success",
+        };
       } catch (error) {
         throw error;
       }

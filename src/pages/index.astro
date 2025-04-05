@@ -11,6 +11,10 @@ if (result?.error) {
 
 const inputErrors = isInputError(result?.error) ? result.error.fields : {};
 
+// Verificar si hay un parámetro de éxito en la URL
+const searchParams = Astro.url.searchParams;
+const signupSuccess = searchParams.get('signup') === 'success';
+
 ---
 
 <Layout title="E-commerce Analytics Beta">
@@ -281,6 +285,7 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
 </Layout>
 
 <script>
+	import { actions } from "astro:actions";
 
 	const launchDate = new Date(import.meta.env.PUBLIC_LAUNCH_DATE);
 
@@ -312,8 +317,6 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
 
 
 	//Modal
-	import { actions } from "astro:actions";
-
 	const modal = document.getElementById('signUpModal');
 	const modalContent = modal?.querySelector('div');
 	const closeModal = document.getElementById('closeModal');
@@ -326,6 +329,24 @@ const inputErrors = isInputError(result?.error) ? result.error.fields : {};
 	const loadingState = submitButton?.querySelector('.loading-state');
 	const formButtonContainer = document.getElementById('formButtonContainer');
 
+	// Verificar si hay un parámetro de éxito en la URL
+	const urlParams = new URLSearchParams(window.location.search);
+	const signupSuccess = urlParams.get('signup') === 'success';
+
+	// Si hay éxito, mostrar el modal con el mensaje de éxito
+	if (signupSuccess) {
+		if (modal && modalContent && successMessage) {
+			modal.classList.add('flex', 'bg-black/50', 'backdrop-blur-sm');
+			modal.classList.remove('hidden');
+			setTimeout(() => {
+				modalContent.classList.remove('translate-y-4', 'opacity-0');
+				successMessage.classList.remove('hidden');
+			}, 10);
+
+			// Limpiar la URL después de mostrar el mensaje
+			window.history.replaceState({}, '', window.location.pathname);
+		}
+	}
 
 	if (!modal || !closeModal || !signUpForm || !modalContent || !submitButton || !successMessage || !errorMessage || !normalState || !loadingState) {
 		console.error('No se encontraron los elementos necesarios del modal');
